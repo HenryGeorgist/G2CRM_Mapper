@@ -54,4 +54,3 @@ C:\Users\Q0HECWPL\Documents\Visual Studio 2015\Projects\Mapper\MapperView\obj\De
 C:\Users\Q0HECWPL\Documents\Visual Studio 2015\Projects\Mapper\MapperView\obj\Debug\MapperView_MarkupCompile.lref
 C:\Users\Q0HECWPL\Documents\Visual Studio 2015\Projects\Mapper\MapperView\obj\Debug\BrowserView.baml
 C:\Users\Q0HECWPL\Documents\Visual Studio 2015\Projects\Mapper\MapperView\obj\Debug\MapperView_Content.g.cs
-C:\Users\Q0HECWPL\Documents\Visual Studio 2015\Projects\Mapper\MapperView\obj\Debug\MapperView.csprojResolveAssemblyReference.cache

@@ -163,6 +163,23 @@ namespace MapperView
                                     if (System.IO.File.Exists(System.IO.Path.ChangeExtension(shpfile, ".dbf"))) System.IO.File.Delete(System.IO.Path.ChangeExtension(shpfile, ".dbf"));
                                     if (System.IO.File.Exists(System.IO.Path.ChangeExtension(shpfile, ".shx"))) System.IO.File.Delete(System.IO.Path.ChangeExtension(shpfile, ".shx"));
                                     if (System.IO.File.Exists(System.IO.Path.ChangeExtension(shpfile, ".prj"))) System.IO.File.Delete(System.IO.Path.ChangeExtension(shpfile, ".prj"));
+
+                                    //remove the previous instance from the map window before addnig it again.
+                                    if (mo.MappedOutputAlreadyPresentInMap)
+                                    {
+                                        foreach (OpenGLMapping.FeatureNode fntoremove in nodes)
+                                        {
+                                            if (fntoremove.Features.Features != null)
+                                            {
+                                                if (fntoremove.Features.Features.GetSource == shpfile)
+                                                {
+                                                    //dont let that mapped output continue.
+                                                    fntoremove.RemoveLayer(true);
+                                                }
+                                            }
+
+                                        }
+                                    }
                                 }
                                 else
                                 {
