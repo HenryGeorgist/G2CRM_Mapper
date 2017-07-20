@@ -52,7 +52,7 @@ namespace MapperView
                     {
                         foreach (OpenGLMapping.FeatureNode fn in nodes)
                         {
-                            if(fn.Features.Features != null)
+                            if (fn.Features.Features != null)
                             {
                                 if (fn.Features.Features.GetSource == shpfile)
                                 {
@@ -92,112 +92,119 @@ namespace MapperView
                             System.Windows.MessageBox.Show(sqlitefile + " isn't a G2CRM mapped outputs file.");
                             return;
                         }
-                        DataBase_Reader.SQLiteReader reader = new DataBase_Reader.SQLiteReader(sqlitefile);
-                        reader.SetTableReader("Assets");
-                        reader.Open();
-                        //string[] colnames = reader.ColumnNames;
-                        LifeSimGIS.PointFeatures p = new LifeSimGIS.PointFeatures();
-                        int count = (int)reader.GetRowCount("Assets");
-                        string[] desc = new string[count];
-                        //System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                        for (int i = 0; i < count; i++)
+                        try
                         {
-                            object[] rowdata = reader.GetRow(i);
-                            desc[i] = (string)rowdata[2];
-                            byte[] bytes = (byte[])rowdata[7];
-                            double x = BitConverter.ToDouble(bytes, 43);
-                            double y = BitConverter.ToDouble(bytes, 43 + 8);
-                            p.Points.Add(new LifeSimGIS.PointD(x, y));
-                            //sb.AppendLine("Point(" + x + " " + y);
-                        }
-                        p.CalculateExtent();
-                        p.NRecords = p.Points.Count;
-                        //string result = sb.ToString();
-                        reader.SetTableReader("Statistics");
-                        Int64[] TimesWet = new Int64[count];
-                        double[] MeanDamage = new double[count];
-                        double[] StdevDamage = new double[count];
-                        double[] SkewDamage = new double[count];
-                        //double[] KurtDamage = new double[count];
-                        //string[] structurecols = reader.ColumnNames;
-                        count = (int)reader.GetRowCount("Statistics");
-                        string[] statstypes = new string[count];
-                        for (int i = 0; i < count; i++)
-                        {
-                            object[] statsrow = reader.GetRow(i);
-                            statstypes[i] = (string)statsrow[5];
-                            if (statstypes[i] == "PVDamage")
+                            DataBase_Reader.SQLiteReader reader = new DataBase_Reader.SQLiteReader(sqlitefile);
+                            reader.SetTableReader("Assets");
+                            reader.Open();
+                            //string[] colnames = reader.ColumnNames;
+                            LifeSimGIS.PointFeatures p = new LifeSimGIS.PointFeatures();
+                            int count = (int)reader.GetRowCount("Assets");
+                            string[] desc = new string[count];
+                            //System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                            for (int i = 0; i < count; i++)
                             {
-                                string ID1 = (string)statsrow[0];
-                                if (ID1.Equals("Asset"))
+                                object[] rowdata = reader.GetRow(i);
+                                desc[i] = (string)rowdata[2];
+                                byte[] bytes = (byte[])rowdata[7];
+                                double x = BitConverter.ToDouble(bytes, 43);
+                                double y = BitConverter.ToDouble(bytes, 43 + 8);
+                                p.Points.Add(new LifeSimGIS.PointD(x, y));
+                                //sb.AppendLine("Point(" + x + " " + y);
+                            }
+                            p.CalculateExtent();
+                            p.NRecords = p.Points.Count;
+                            //string result = sb.ToString();
+                            reader.SetTableReader("Statistics");
+                            Int64[] TimesWet = new Int64[count];
+                            double[] MeanDamage = new double[count];
+                            double[] StdevDamage = new double[count];
+                            double[] SkewDamage = new double[count];
+                            //double[] KurtDamage = new double[count];
+                            //string[] structurecols = reader.ColumnNames;
+                            count = (int)reader.GetRowCount("Statistics");
+                            string[] statstypes = new string[count];
+                            for (int i = 0; i < count; i++)
+                            {
+                                object[] statsrow = reader.GetRow(i);
+                                statstypes[i] = (string)statsrow[5];
+                                if (statstypes[i] == "PVDamage")
                                 {
-                                    int ID4;
-                                    Int32.TryParse((string)statsrow[3], out ID4);
-                                    //Int32.TryParse((string)statsrow[3],out ID4);
-                                    TimesWet[ID4 - 1] = (Int64)statsrow[8];
-                                    MeanDamage[ID4 - 1] = (double)(Decimal)statsrow[9];
-                                    StdevDamage[ID4 - 1] = (double)(Decimal)statsrow[10];
-                                    SkewDamage[ID4 - 1] = (double)(Decimal)statsrow[11];
-                                    //KurtDamage[ID4-1] = (double)(Decimal)statsrow[12];
+                                    string ID1 = (string)statsrow[0];
+                                    if (ID1.Equals("Asset"))
+                                    {
+                                        int ID4;
+                                        Int32.TryParse((string)statsrow[3], out ID4);
+                                        //Int32.TryParse((string)statsrow[3],out ID4);
+                                        TimesWet[ID4 - 1] = (Int64)statsrow[8];
+                                        MeanDamage[ID4 - 1] = (double)(Decimal)statsrow[9];
+                                        StdevDamage[ID4 - 1] = (double)(Decimal)statsrow[10];
+                                        SkewDamage[ID4 - 1] = (double)(Decimal)statsrow[11];
+                                        //KurtDamage[ID4-1] = (double)(Decimal)statsrow[12];
+                                    }
                                 }
                             }
-                        }
-                        string outputdir = System.IO.Directory.GetParent(sqlitefile).FullName;
-                        outputdir = outputdir + "/MapperFiles/";
-                        if (!System.IO.Directory.Exists(outputdir)) System.IO.Directory.CreateDirectory(outputdir);
-                        string shpfile = outputdir + mo.SimulationName + "_AssetDamages.shp";
-                        if (mo.MappedOutputAlreadyPresentInMap)
-                        {
-                            if (System.Windows.Forms.MessageBox.Show("The file " + shpfile + " already exists in the map window, proceeding with an import could cause undesired results, are you sure you wish to proceed?", "Danger", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
+                            string outputdir = System.IO.Directory.GetParent(sqlitefile).FullName;
+                            outputdir = outputdir + "/MapperFiles/";
+                            if (!System.IO.Directory.Exists(outputdir)) System.IO.Directory.CreateDirectory(outputdir);
+                            string shpfile = outputdir + mo.SimulationName + "_AssetDamages.shp";
+                            if (mo.MappedOutputAlreadyPresentInMap)
                             {
-                                break;
+                                if (System.Windows.Forms.MessageBox.Show("The file " + shpfile + " already exists in the map window, proceeding with an import could cause undesired results, are you sure you wish to proceed?", "Danger", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
+                                {
+                                    break;
+                                }
                             }
-                        }
-                        if (System.IO.File.Exists(shpfile))
-                        {
-                            if (System.Windows.MessageBox.Show(shpfile + " already exists, would you like to delete?", "Existing Output", System.Windows.MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            if (System.IO.File.Exists(shpfile))
                             {
-                                System.IO.File.Delete(shpfile);
-                                if (System.IO.File.Exists(System.IO.Path.ChangeExtension(shpfile, ".dbf"))) System.IO.File.Delete(System.IO.Path.ChangeExtension(shpfile, ".dbf"));
-                                if (System.IO.File.Exists(System.IO.Path.ChangeExtension(shpfile, ".shx"))) System.IO.File.Delete(System.IO.Path.ChangeExtension(shpfile, ".shx"));
-                                if (System.IO.File.Exists(System.IO.Path.ChangeExtension(shpfile, ".prj"))) System.IO.File.Delete(System.IO.Path.ChangeExtension(shpfile, ".prj"));
+                                if (System.Windows.MessageBox.Show(shpfile + " already exists, would you like to delete?", "Existing Output", System.Windows.MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                                {
+                                    System.IO.File.Delete(shpfile);
+                                    if (System.IO.File.Exists(System.IO.Path.ChangeExtension(shpfile, ".dbf"))) System.IO.File.Delete(System.IO.Path.ChangeExtension(shpfile, ".dbf"));
+                                    if (System.IO.File.Exists(System.IO.Path.ChangeExtension(shpfile, ".shx"))) System.IO.File.Delete(System.IO.Path.ChangeExtension(shpfile, ".shx"));
+                                    if (System.IO.File.Exists(System.IO.Path.ChangeExtension(shpfile, ".prj"))) System.IO.File.Delete(System.IO.Path.ChangeExtension(shpfile, ".prj"));
+                                }
+                                else
+                                {
+                                    return;
+                                }
+
+                            }
+
+                            LifeSimGIS.ShapefileWriter sw = new LifeSimGIS.ShapefileWriter(shpfile);
+                            System.Collections.Generic.List<Array> data = new List<Array>();
+                            data.Add(desc);
+                            data.Add(TimesWet);
+                            data.Add(MeanDamage);
+                            data.Add(StdevDamage);
+                            data.Add(SkewDamage);
+                            //data.Add(KurtDamage);
+                            System.Collections.Generic.List<string> colheaders = new List<string>();
+                            colheaders.Add("Name");
+                            colheaders.Add("N");
+                            colheaders.Add("MeanPVDmg");
+                            colheaders.Add("StDevPVDmg");
+                            colheaders.Add("SkewPVDmg");
+                            //colheaders.Add("KurtPVDmg");
+                            int proj = 0;
+                            if (Int32.TryParse(e.Args[2], out proj))
+                            {
+                                sw.WriteFeatures(p, data, colheaders, new GDALAssist.EPSGProjection(proj));
                             }
                             else
                             {
-                                return;
+                                sw.WriteFeatures(p, data, colheaders);
                             }
 
-                        }
 
-                        LifeSimGIS.ShapefileWriter sw = new LifeSimGIS.ShapefileWriter(shpfile);
-                        System.Collections.Generic.List<Array> data = new List<Array>();
-                        data.Add(desc);
-                        data.Add(TimesWet);
-                        data.Add(MeanDamage);
-                        data.Add(StdevDamage);
-                        data.Add(SkewDamage);
-                        //data.Add(KurtDamage);
-                        System.Collections.Generic.List<string> colheaders = new List<string>();
-                        colheaders.Add("Name");
-                        colheaders.Add("N");
-                        colheaders.Add("MeanPVDmg");
-                        colheaders.Add("StDevPVDmg");
-                        colheaders.Add("SkewPVDmg");
-                        //colheaders.Add("KurtPVDmg");
-                        int proj = 0;
-                        if (Int32.TryParse(e.Args[2], out proj))
+
+                            OpenGLMapping.FeatureNode fn = new OpenGLMapping.FeatureNode(shpfile, m.MapWindow.MapWindow);
+                            m.MapTreeView.AddGISData(fn);
+                        }catch(Exception ex)
                         {
-                            sw.WriteFeatures(p, data, colheaders, new GDALAssist.EPSGProjection(proj));
-                        }
-                        else
-                        {
-                            sw.WriteFeatures(p, data, colheaders);
+                            System.Windows.Forms.MessageBox.Show("Errors opening Mapped Output sqlite file, " + sqlitefile + "\n" + ex.Message.ToString());
                         }
 
-
-                        
-                        OpenGLMapping.FeatureNode fn = new OpenGLMapping.FeatureNode(shpfile, m.MapWindow.MapWindow);
-                        m.MapTreeView.AddGISData(fn);
 
                     }
 
@@ -224,13 +231,14 @@ namespace MapperView
                     System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
             }
-            else if(e.Args.Length == 1)
+            else if (e.Args.Length == 1)
             {
                 //check for mapper.xml file
                 _MapDirectory = e.Args[0];
-                if(!System.IO.Directory.Exists(_MapDirectory)) System.IO.Directory.CreateDirectory(_MapDirectory);
+                if (!System.IO.Directory.Exists(_MapDirectory)) System.IO.Directory.CreateDirectory(_MapDirectory);
                 LoadFromXml(m);
-            }else
+            }
+            else
             {
                 LoadFromXml(m);
             }
