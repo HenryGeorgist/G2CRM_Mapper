@@ -1,0 +1,86 @@
+Simulation Name: TestRun1
+G2CRM Run on 2017-06-21 10:45:54 Model Version: 4.542
+Number of Iterations: 10
+RunConditions: Test1-10 Test1-10
+Seed: 5550121
+Sea Level Change: Low
+Sea Level Change Rate: 0.010465
+EAD Mode: False
+Interest Rate: 0.02875
+Duration: 54.0
+Basis Time: 1/1/2020 00:00
+Start Time: 1/1/2016 00:00
+Storm Sequence Generation Method: Bootstrap
+Storm Sequence Id: 0
+Storm Set: IdealStorms_It4
+Simulation Settings
+GlobalSLCBasisYear: 2012
+GlobalSLCBasisMonth: 6
+WriteSimulationRunDatabase: True
+AutoFlushMA: False
+IncludeTide: True
+DefaultInterestRate: 0.035
+SignificantRebuildDamageThreshold: 0.5
+MaxStructureRaising: 12
+RaisingDamageThreshold: 0.5
+StickyFileLocation: nolocation
+Databases
+	G2CRM:	C:\Users\ogdenba\Downloads\ForWill/ForWill.sqlite
+	System:	C:\Users\ogdenba\Downloads\ForWill\Data\System\BCCert1_System.sqlite
+	Storm:	C:\Users\ogdenba\Downloads\ForWill\Data\Storms\BCCert1_Storms.sqlite
+	Assets:	C:\Users\ogdenba\Downloads\ForWill\Data\Assets\BCCert1_Assets.sqlite
+	Terrain:	
+
+Storm Sequence Generation Method:
+	Bootstrap Sampling
+
+System Information:
+
+Protective System Elements:
+	Total: 2
+	Bulkhead: 2
+Modeled Areas:
+	Total: 2
+	Upland: 2
+Assets:
+	Total: 180
+	RES1-2SNB: 51
+	COM1: 3
+	RES1-1SNB: 112
+	COM5: 2
+	RES1-3SNB: 5
+	GOV1: 3
+	COM8: 2
+	COM3: 1
+	GOV2: 1
+Number of Storms: 7
+
+                                                       Count             Average                 Min                 Max  Standard Deviation
+Number of Storms                                        10.0                13.4                 8.0                21.0                 3.9
+Tropical Storms                                         10.0                13.4                 8.0                21.0                 3.9
+
+Per Storm Type Per Year
+Tropical                                                10.0             0.24815                 0.1                 0.4             0.07209
+
+Per Season Per Year
+1 Trop Season June(T)                                   10.0             0.00741                 0.0                 0.0             0.01295
+2 Trop Season July(T)                                   10.0             0.00926                 0.0                 0.0             0.01309
+3 Trop Season August(T)                                 10.0             0.07963                 0.0                 0.1             0.03154
+4 Trop Season September(T)                              10.0             0.11296                 0.0                 0.2             0.05552
+5 Trop Season October(T)                                10.0             0.02963                 0.0                 0.1             0.02648
+6 Trop Season November(T)                               10.0             0.00926                 0.0                 0.0             0.00976
+PV Structure Damage                                     10.0         1,436,660.9           435,414.8         5,130,660.3         1,484,152.2
+PV Contents Damage                                      10.0         1,152,363.4           277,778.2         4,963,408.3         1,478,834.3
+PV Damage                                               10.0         2,589,024.3           713,193.0        10,094,068.6         2,955,634.2
+PV PSE Repair Cost                                      10.0                 0.0                 0.0                 0.0                 0.0
+Life Loss Under 65                                      10.0                56.0                 0.0               476.0               148.6
+Life Loss Over 65                                       10.0                 1.1                 0.0                11.5                 3.6
+Total Life Loss                                         10.0                57.1                 0.0               476.0               148.2
+MA1 Upland PVContentDamage                              10.0         1,272,854.1           293,569.7         5,583,250.9         1,669,800.2
+MA1 Upland PVStructureDamage                            10.0         1,614,401.2           473,533.5         5,835,612.1         1,691,249.1
+MA1 Upland PVDamage                                     10.0         2,887,255.3           767,103.2        11,418,863.0         3,353,918.9
+MA2 Upland PVContentDamage                              10.0             8,391.9                 0.0            83,919.5            26,537.7
+MA2 Upland PVStructureDamage                            10.0             3,476.4                 0.0            34,763.9            10,993.3
+MA2 Upland PVDamage                                     10.0            11,868.3                 0.0           118,683.4            37,531.0
+
+Computation Time: 116.1 seconds

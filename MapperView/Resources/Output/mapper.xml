@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Map_Layers Map_Projection="+proj=longlat +ellps=WGS84 +no_defs " View_MinX="-82.7121202798756" View_MaxX="-82.706260344015" View_MinY="27.7370134660782" View_MaxY="27.7420331092493">
+  <Map_Layer Name="TestRun1_AssetDamages" Type="OpenGLMapping.MapPoints" IsChecked="true" ByteTag="0" Location=".\BCCert1_-_default\Without Project Plan\TestRun1/MapperFiles/TestRun1_AssetDamages.shp">
+    <Vector_Draw_Properties Draw_By_Index="SingleSymbol" CurrentFieldIndex="-1">
+      <Glyphs>
+        <Glyph Size="9" Type="Circle" />
+      </Glyphs>
+      <Lines>
+        <Line Color="-16777216" Draw_Line="True" Width="1" End_Cap="False" />
+      </Lines>
+      <Fills>
+        <Fill Draw_Fill="True" Color="-4019529" />
+      </Fills>
+    </Vector_Draw_Properties>
+  </Map_Layer>
+  <Map_Layer Name="TestRun2_AssetDamages" Type="OpenGLMapping.MapPoints" IsChecked="true" ByteTag="0" Location=".\BCCert1_-_default\Without Project Plan\TestRun2/MapperFiles/TestRun2_AssetDamages.shp">
+    <Vector_Draw_Properties Draw_By_Index="SingleSymbol" CurrentFieldIndex="-1">
+      <Glyphs>
+        <Glyph Size="9" Type="Circle" />
+      </Glyphs>
+      <Lines>
+        <Line Color="-16777216" Draw_Line="True" Width="1" End_Cap="False" />
+      </Lines>
+      <Fills>
+        <Fill Draw_Fill="True" Color="-2105677" />
+      </Fills>
+    </Vector_Draw_Properties>
+  </Map_Layer>
+  <Map_Layer Name="OpenStreetMap" Type="OpenGLMapping.MapWebTiles" IsChecked="true" ByteTag="0" Location="OpenStreetMap">
+    <Raster_Draw_Properties Ramp_Type="BlackWhite" Stretch="StandardDeviations" Linear_Min="0" Linear_Max="10" Standard_Deviations="2" InvertedRamp="False" CategorizedRamp="False" Transparency="1" />
+  </Map_Layer>
+</Map_Layers>

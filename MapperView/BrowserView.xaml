@@ -1,0 +1,34 @@
+﻿<Window x:Class="MapperView.BrowserView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:MapperView"
+        Title="Mapped Outputs" Height="400" Width="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Label Content="Available Mapped Output Files:"/>
+        <ListView Grid.Row="1" Margin="5" ItemsSource="{Binding Items}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Import" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding UseMappedOutput}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Already In Map"  DisplayMemberBinding="{Binding MappedOutputAlreadyPresentInMap}" Width="Auto"/>
+                    <GridViewColumn Header="Representation" DisplayMemberBinding="{Binding Representation}" Width="Auto"/>
+                    <GridViewColumn Header="Alternative" DisplayMemberBinding="{Binding Alternative}" Width="Auto"/>
+                    <GridViewColumn Header="Simulation" DisplayMemberBinding="{Binding SimulationName}" Width="Auto"/>
+                    <GridViewColumn Header="Sea Level Scenario" DisplayMemberBinding="{Binding SeaLevelChange}" Width="Auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="OK" Width="40" Grid.Row="2" HorizontalAlignment="Right" Margin="5" Click="Button_Click"/>
+    </Grid>
+</Window>

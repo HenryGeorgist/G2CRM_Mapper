@@ -1,0 +1,50 @@
+﻿<Window x:Class="MapperView.Mapper"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:MWC="clr-namespace:OpenGLMapping;assembly=OpenGLMapping"
+        Title="Mapper" Height="768" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" Name="ToolBarRow"></RowDefinition>
+            <RowDefinition Height="1*" Name="ModelRow"></RowDefinition>
+            <RowDefinition Height="22" Name="NotificationRow"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210" Name="TableOfContentsColumn"></ColumnDefinition>
+            <ColumnDefinition Width="1*" Name="MapWindowColumn"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--Map Window-->
+        <MWC:WPFMapWindow Name="MapWindow" Grid.Column="1" Grid.Row="1" Margin="3,0,0,0"/>
+
+        <GridSplitter Grid.Row="1" Grid.Column="0" Margin="0" Background="Gray" BorderBrush="DarkGray" BorderThickness="1" HorizontalAlignment="Right" Width="3" Name="TOC_GridSplitter"/>
+        <GridSplitter Grid.Row="1" Grid.Column="1" Margin="0" Background="Gray" BorderBrush="DarkGray" BorderThickness="1" HorizontalAlignment="Left" Width="3" Name="Map_GridSplitter"/>
+
+        <!--Table of Contents-->
+        <TabControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="5,5,3,0" Name="TOCTabControl">
+            <TabItem Header="Map Layers" Name="MapsTab">
+                <Grid Name="MapTreeGrid">
+                    <MWC:MapTreeView Name="MapTreeView"></MWC:MapTreeView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!--Map Toolbar-->
+        <ToolBarTray Grid.Column="1" Grid.Row="0" Margin="0" Name="MapToolBarTray" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#FFEBEBEB">
+            <MWC:BasicMapToolbar Name="MapToolbar" Height="27" ToolBarTray.IsLocked="True" VerticalAlignment="Bottom"></MWC:BasicMapToolbar>
+            <ToolBar Name="SelectionToolbar" Height="27" ToolBarTray.IsLocked="True" VerticalAlignment="Bottom">
+                <MWC:SelectableLayersControl Name="SelectableLayers" Width="300" />
+            </ToolBar>
+
+            <MWC:FeatureEditToolbar Name="FeatureEditorToolbar" BandIndex="2" Height="27" ToolBarTray.IsLocked="True" VerticalAlignment="Bottom"></MWC:FeatureEditToolbar>
+        </ToolBarTray>
+
+        <!--Status Bar-->
+        <Grid Name="StudyStatusPanel" Background="#FFAEBCD1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <ProgressBar Name="StudyProgressBar" Margin="5,0,0,0" Height="18" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100"/>
+            <TextBlock Name="StudyProgressText" Text="{Binding Path=ProgressText}" Margin="110,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Border Name="StatusBorder" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right">
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,28 @@
+Event,Time,MinutesSinceStart
+System Loading Complete,2017-06-21 10:46:02,0.1
+Asset Loading Complete,2017-06-21 10:46:02,0.1
+Storm Loading Complete,2017-06-21 10:46:03,0.1
+Start Time,2017-06-21 10:45:54,0.0
+Start Simulation,2017-06-21 10:45:54,0.0
+Loading Complete,2017-06-21 10:46:03,0.1
+Begin Iteration 1,2017-06-21 10:46:03,0.1
+End Iteration1,2017-06-21 10:46:14,0.3
+Begin Iteration2,2017-06-21 10:46:15,0.3
+End Iteration2,2017-06-21 10:46:21,0.4
+Begin Iteration3,2017-06-21 10:46:21,0.4
+End Iteration3,2017-06-21 10:46:37,0.7
+Begin Iteration4,2017-06-21 10:46:37,0.7
+End Iteration4,2017-06-21 10:46:51,0.9
+Begin Iteration5,2017-06-21 10:46:51,0.9
+End Iteration5,2017-06-21 10:47:00,1.1
+Begin Iteration6,2017-06-21 10:47:00,1.1
+End Iteration6,2017-06-21 10:47:10,1.3
+Begin Iteration7,2017-06-21 10:47:10,1.3
+End Iteration7,2017-06-21 10:47:17,1.4
+Begin Iteration8,2017-06-21 10:47:18,1.4
+End Iteration8,2017-06-21 10:47:26,1.5
+Begin Iteration9,2017-06-21 10:47:26,1.5
+End Iteration9,2017-06-21 10:47:39,1.7
+Begin Iteration10,2017-06-21 10:47:39,1.7
+End Iteration10,2017-06-21 10:47:50,1.9
+End Simulation,2017-06-21 10:48:08,2.23

@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91D9252F-2E5E-4C0D-9390-CC4FE85A85B8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MapperView</RootNamespace>
+    <AssemblyName>MapperView</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataBase_Reader, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\DataBase_Reader.dll</HintPath>
+    </Reference>
+    <Reference Include="GDALAssist, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\GDALAssist.dll</HintPath>
+    </Reference>
+    <Reference Include="gdal_csharp, Version=1.0.4916.28018, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\gdal_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LibTessDotNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\LibTessDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="LifeSimGIS, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\LifeSimGIS.dll</HintPath>
+    </Reference>
+    <Reference Include="ogr_csharp, Version=1.0.4916.28017, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\ogr_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenGLMapping, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\OpenGLMapping.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="osr_csharp, Version=1.0.4916.28017, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\osr_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="MappedOutputVM.cs" />
+    <Compile Include="SpatialiteReader.cs" />
+    <Page Include="BrowserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mapper.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BrowserView.xaml.cs">
+      <DependentUpon>BrowserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MappedOutputListVM.cs" />
+    <Compile Include="Mapper.xaml.cs">
+      <DependentUpon>Mapper.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Resources\Assets\BCCert1_Assets.sqlite" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\CsvOutputs_Low_TestRun1.sqlite" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\IterationSeason_Low_TestRun1.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\IterationSummary_Low_TestRun1.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\IterationYear_Low_TestRun1.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\Low_TestRun1.echo" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\Low_TestRun1.prn" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\MapOutputs_Low_TestRun1.sqlite" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\MapperFiles\TestRun1_AssetDamages.dbf" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\MapperFiles\TestRun1_AssetDamages.prj" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\MapperFiles\TestRun1_AssetDamages.shp" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\MapperFiles\TestRun1_AssetDamages.shx" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\MessageFile_Low_TestRun1.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\Tide_Low_TestRun1.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\Timing_Low_TestRun1.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun1\WaveCalculation_Low_TestRun1.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\CsvOutputs_Low_TestRun2.sqlite" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\IterationSeason_Low_TestRun2.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\IterationSummary_Low_TestRun2.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\IterationYear_Low_TestRun2.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\Low_TestRun2.echo" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\Low_TestRun2.prn" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\MapOutputs_Low_TestRun2.sqlite" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\MapperFiles\TestRun2_AssetDamages.dbf" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\MapperFiles\TestRun2_AssetDamages.prj" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\MapperFiles\TestRun2_AssetDamages.shp" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\MapperFiles\TestRun2_AssetDamages.shx" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\MessageFile_Low_TestRun2.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\Tide_Low_TestRun2.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\Timing_Low_TestRun2.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun2\WaveCalculation_Low_TestRun2.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\CsvOutputs_Low_TestRun3.sqlite" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\IterationSeason_Low_TestRun3.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\IterationSummary_Low_TestRun3.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\IterationYear_Low_TestRun3.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\Low_TestRun3.echo" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\Low_TestRun3.prn" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\MapOutputs_Low_TestRun3.sqlite" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\MapperFiles\TestRun3_AssetDamages.dbf" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\MapperFiles\TestRun3_AssetDamages.prj" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\MapperFiles\TestRun3_AssetDamages.shp" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\MapperFiles\TestRun3_AssetDamages.shx" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\MessageFile_Low_TestRun3.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\Tide_Low_TestRun3.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\Timing_Low_TestRun3.csv" />
+    <None Include="Resources\Output\BCCert1_-_default\Without Project Plan\TestRun3\WaveCalculation_Low_TestRun3.csv" />
+    <None Include="Resources\Output\ForWill_outputs.sqlite" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\BitMiracle.LibTiff.NET.dll" />
+    <Content Include="Resources\clipper_library.dll" />
+    <Content Include="Resources\clipper_library.pdb" />
+    <Content Include="Resources\ColorPicker.dll" />
+    <Content Include="Resources\Consequences_Assist.dll" />
+    <Content Include="Resources\Consequences_Assist.pdb" />
+    <Resource Include="Resources\Consequences_Assist.xml" />
+    <Content Include="Resources\DataBase_Reader.dll" />
+    <Content Include="Resources\DataBase_Reader.pdb" />
+    <Resource Include="Resources\DataBase_Reader.xml" />
+    <Content Include="Resources\DataTable_Viewer.dll" />
+    <Content Include="Resources\DataTable_Viewer.pdb" />
+    <Resource Include="Resources\DataTable_Viewer.xml" />
+    <Content Include="Resources\DSSIO.dll" />
+    <Content Include="Resources\FieldCalculationParser.dll" />
+    <Content Include="Resources\FieldCalculationParser.pdb" />
+    <Resource Include="Resources\FieldCalculationParser.xml" />
+    <Content Include="Resources\GDALAssist.dll" />
+    <Content Include="Resources\gdalconst_csharp.dll" />
+    <Content Include="Resources\gdalconst_wrap.dll" />
+    <Content Include="Resources\gdal_csharp.dll" />
+    <Content Include="Resources\gdal_wrap.dll" />
+    <Content Include="Resources\LibTessDotNet.dll" />
+    <Content Include="Resources\LifeSimGIS.dll" />
+    <Content Include="Resources\LifeSimGIS.pdb" />
+    <Resource Include="Resources\LifeSimGIS.xml" />
+    <Content Include="Resources\ogr_csharp.dll" />
+    <Content Include="Resources\ogr_wrap.dll" />
+    <Content Include="Resources\OpenGLMapping.dll" />
+    <Content Include="Resources\OpenGLMapping.pdb" />
+    <Resource Include="Resources\OpenGLMapping.xml" />
+    <Content Include="Resources\OpenTK.dll" />
+    <Content Include="Resources\OpenTK.GLControl.dll" />
+    <Content Include="Resources\osr_csharp.dll" />
+    <Content Include="Resources\osr_wrap.dll" />
+    <Content Include="Resources\OxyPlot.dll" />
+    <Content Include="Resources\OxyPlot.pdb" />
+    <Content Include="Resources\OxyPlot.Wpf.dll" />
+    <Content Include="Resources\OxyPlot.Wpf.pdb" />
+    <Resource Include="Resources\OxyPlot.Wpf.xml" />
+    <Resource Include="Resources\OxyPlot.xml" />
+    <Content Include="Resources\OxyPlot.Xps.dll" />
+    <Content Include="Resources\OxyPlot.Xps.pdb" />
+    <Resource Include="Resources\OxyPlot.Xps.xml" />
+    <Content Include="Resources\Poly2Tri.dll" />
+    <Content Include="Resources\QuickHelp.dll" />
+    <Content Include="Resources\QuickHelp.pdb" />
+    <Resource Include="Resources\QuickHelp.xml" />
+    <Content Include="Resources\RTree.dll" />
+    <Content Include="Resources\SQLite.Interop.dll" />
+    <Content Include="Resources\Statistics.dll" />
+    <Content Include="Resources\Statistics.pdb" />
+    <Resource Include="Resources\Statistics.xml" />
+    <Content Include="Resources\System.Data.SQLite.dll" />
+    <Content Include="Resources\WPFFolderBrowser.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)Resources\gdal_wrap.dll" "$(TargetDir)\gdal_wrap.dll"
+copy "$(ProjectDir)Resources\gdalconst_wrap.dll" "$(TargetDir)\gdalconst_wrap.dll"
+copy "$(ProjectDir)Resources\osr_wrap.dll" "$(TargetDir)\osr_wrap.dll"
+copy "$(ProjectDir)Resources\ogr_wrap.dll" "$(TargetDir)\ogr_wrap.dll"
+copy "$(ProjectDir)Resources\SQLite.Interop.dll" "$(TargetDir)\SQLite.Interop.dll"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
