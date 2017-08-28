@@ -9,7 +9,7 @@ namespace MapperView
     /// </summary>
     public partial class App : Application
     {
-        private string _MapDirectory = System.IO.Directory.GetCurrentDirectory();
+        private string _MapDirectory = "";//System.IO.Directory.GetCurrentDirectory();
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -248,17 +248,17 @@ namespace MapperView
                     System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
             }
-            else if (e.Args.Length == 1)
-            {
-                //check for mapper.xml file
-                _MapDirectory = e.Args[0];
-                if (!System.IO.Directory.Exists(_MapDirectory)) System.IO.Directory.CreateDirectory(_MapDirectory);
-                LoadFromXml(m);
-            }
-            else
-            {
-                LoadFromXml(m);
-            }
+            //else if (e.Args.Length == 1)
+            //{
+            //    //check for mapper.xml file
+            //    _MapDirectory = e.Args[0];
+            //    if (!System.IO.Directory.Exists(_MapDirectory)) System.IO.Directory.CreateDirectory(_MapDirectory);
+            //    LoadFromXml(m);
+            //}
+            //else
+            //{
+            //    LoadFromXml(m);
+            //}
         }
 
         private void M_Closing(object sender, System.ComponentModel.CancelEventArgs e)
